@@ -1,0 +1,34 @@
+{
+  "name": "GDC Calendar Tool",
+  "version": "1.0.0",
+  "description": "Chrome Extension for adding GDC sessions to your Google Calendar in one click!",
+  "manifest_version": 3,
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAntWggMpN7YnuC4MP91q2ZI68FKGnfA6v6FYTTGNW06SwPH7al9fypvNpRHHB5nnm56VatP/bowtd7HFLk77D5vhjcDEHKLo3OR2pWlzoeg1hb7OGc2DeNHFVd8MYsZJgcOuyGf3i+TsC9Hi2xmTKthxj+7Yvvx2kjOocAY9zhPQ6iFKWqdXN3VZ0hFzPzWUrGAENVVX9f03cF82VTe19P1tP0ws7ra/zmNxEv4VcDKVzT1OBHQgmwrxQYsNrgkqxZ8M0iMyqBSxw+SnWlQJncd/Jj7jeOy0HP2GYYndTdKFiHbjTLSrOd6dVVjfXpKJWCMSKw8mqYpMpG9Uiv8DdWwIDAQAB",
+  "author": "Jacob Dunbar",
+  "action":{
+      "default_popup": "index.html",
+      "default_title": "GDC Calendar Tool"
+  },
+  "permissions": [
+    "identity",
+    "tabs",
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://schedule.gdconf.com/session/*"],
+      "css": ["my-styles.css"],
+      "js": ["content-script.js"]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "oauth2": {
+    "client_id": "134393940605-i3s4ek84k86g33eai2kb028dql51rh4r.apps.googleusercontent.com",
+    "scopes": [
+      "https://www.googleapis.com/auth/calendar.events.owned"
+    ]
+  },
+  "options_page": "options.html"
+}

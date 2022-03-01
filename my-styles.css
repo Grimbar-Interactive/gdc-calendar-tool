@@ -1,0 +1,13 @@
+#gdc-calendar-tool-add-button {
+  background-color: #00b7ff !important;
+  border-color: #00b7ff !important;
+  color: white !important;
+  padding: 11px 0px !important;
+}
+
+#gdc-calendar-tool-add-important-button {
+  background-color: #ff005e !important;
+  border-color: #ff005e !important;
+  color: white !important;
+  padding: 11px 0px !important;
+}
