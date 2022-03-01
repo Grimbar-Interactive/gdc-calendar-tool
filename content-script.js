@@ -23,6 +23,7 @@ function addSessionToCalendar(isImportant) {
 
   let descriptionNode = document.getElementsByClassName('sb5-session-page-description')[0];
   let description = Array.from(descriptionNode.children).map(c => c.innerHTML.replace(/<[^>]+>/g, '')).join('\n\n');
+  description += `\n\n${document.URL}`;
 
   let timeString = document.getElementsByClassName('sb5-session-page-time')[0].innerHTML;
   let timeRegex = /((1[0-2]|0?[1-9]):([0-5][0-9]) ?([AaPp][Mm]))/g;
