@@ -12,7 +12,8 @@ A Chrome extension for adding GDC sessions to your Google Calendar with one clic
   - Click the Extensions icon (puzzle piece) -> Manage Extensions
   - Click the "Menu" button (three dots) -> Settings -> Extensions
   - Type "chrome://extensions" in the URL bar
-- Click "Loack unpacked" in the top left and select the extracted folder (the one actually containing the source files)
+- Click the "Developer Mode" toggle in the top right
+- Click "Load unpacked" in the top left and select the extracted folder (the one actually containing the source files)
 
 ## Usage
 - Navigate to any individual session page from the [GDC Session Schedule page](https://schedule.gdconf.com)
