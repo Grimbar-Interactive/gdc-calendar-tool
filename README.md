@@ -1,7 +1,7 @@
 # gdc-calendar-tool
 A Chrome extension for adding GDC sessions to your Google Calendar with one click!
 
-![Screenshot](/screenshot.png)
+![Screenshot](/screenshot-large.png)
 
 ## Installation
 ### Chrome Web Store
