@@ -11,15 +11,27 @@ function addSessionToCalendar(isImportant) {
   // Get the location of the session
   let locationString = document.getElementsByClassName('sb5-session-page-location')[0].innerHTML;
   var location = locationString;
-  let roomNumber = locationString.match( /[0-9]+/g)[0];
-  if (locationString.includes('West')) {
-    location = `W${roomNumber}`;
-  } else if (locationString.includes('South')) {
-    location = `S${roomNumber}`;
-  } else if (locationString.includes('North')) {
-    location = `N${roomNumber}`; 
+
+  let roomNumberMatch = locationString.match( /[0-9]+/g);
+  if (roomNumberMatch != null) {
+    let roomNumber = roomNumberMatch[0];
+    if (locationString.includes('West')) {
+      location = `W${roomNumber}`;
+    } else if (locationString.includes('South')) {
+      location = `S${roomNumber}`;
+    } else if (locationString.includes('North')) {
+      location = `N${roomNumber}`; 
+    }
+  } else {
+    // Has no room number, parse for special locations!
+    if (locationString.includes('Virtual GDC Platform')) {
+      location = 'Virtual GDC Platform';
+    } else if (locationString.includes('GDC Main Stage')) {
+      location = 'GDC Main Stage, West Hall';
+    } else if (locationString.includes('GDC Industry Stage')) {
+      location = 'GDC Industry Stage, Expo Floor, South Hall';
+    }
   }
-  //TODO: Perhaps other locations need to be added? Yerba Buena?
 
   let descriptionNode = document.getElementsByClassName('sb5-session-page-description')[0];
   let description = Array.from(descriptionNode.children).map(c => c.innerHTML.replace(/<[^>]+>/g, '')).join('\n\n');
