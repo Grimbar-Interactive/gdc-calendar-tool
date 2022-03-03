@@ -5,7 +5,7 @@ A Chrome extension for adding GDC sessions to your Google Calendar with one clic
 
 ## Installation
 ### Chrome Web Store
-- ~~Visit the [Chrome Web Store](https://chrome.google.com/webstore/detail/gdc-calendar-tool/pcegnhfgcahkoihgmecbplanamokaede) to install the latest version.~~
+- Visit the [Chrome Web Store](https://chrome.google.com/webstore/detail/gdc-calendar-tool/pcegnhfgcahkoihgmecbplanamokaede) to install the latest version.
 
 ### Download Locally
 - Download the latest version's .zip source file from the [releases page](https://github.com/jacobfdunbar/gdc-calendar-tool/releases)
