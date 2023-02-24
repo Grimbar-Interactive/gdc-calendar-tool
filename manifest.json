@@ -1,6 +1,6 @@
 {
   "name": "GDC Calendar Tool",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "description": "Chrome Extension for adding GDC sessions to your Google Calendar in one click!",
   "manifest_version": 3,
   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAntWggMpN7YnuC4MP91q2ZI68FKGnfA6v6FYTTGNW06SwPH7al9fypvNpRHHB5nnm56VatP/bowtd7HFLk77D5vhjcDEHKLo3OR2pWlzoeg1hb7OGc2DeNHFVd8MYsZJgcOuyGf3i+TsC9Hi2xmTKthxj+7Yvvx2kjOocAY9zhPQ6iFKWqdXN3VZ0hFzPzWUrGAENVVX9f03cF82VTe19P1tP0ws7ra/zmNxEv4VcDKVzT1OBHQgmwrxQYsNrgkqxZ8M0iMyqBSxw+SnWlQJncd/Jj7jeOy0HP2GYYndTdKFiHbjTLSrOd6dVVjfXpKJWCMSKw8mqYpMpG9Uiv8DdWwIDAQAB",
@@ -29,5 +29,10 @@
       "https://www.googleapis.com/auth/calendar.events.owned"
     ]
   },
-  "options_page": "options.html"
+  "options_page": "options.html",
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
 }

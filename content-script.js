@@ -50,10 +50,11 @@ function addSessionToCalendar(isImportant) {
   var day = parseInt(document.getElementsByClassName('sb5-session-page-date')[0].innerHTML.match(/[1-3]?[0-9]/g)[0]);
 
   var [startHours, startMinutes] = parseDaytime(startTimeString);
-  var startDate = new Date(`${day} March 2022 ${startHours}:${startMinutes}:00 UTC-07:00`);
+  var year = new Date().getFullYear();
+  var startDate = new Date(`${day} March ${year} ${startHours}:${startMinutes}:00 UTC-07:00`);
 
   var [endHours, endMinutes] = parseDaytime(endTimeString);
-  var endDate = new Date(`${day} March 2022 ${endHours}:${endMinutes}:00 UTC-07:00`);
+  var endDate = new Date(`${day} March ${year} ${endHours}:${endMinutes}:00 UTC-07:00`);
 
   var event = {
     'summary': name,
