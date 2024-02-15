@@ -18,6 +18,18 @@
   background: linear-gradient(#e15b85, #e15b85) padding-box, linear-gradient(90deg, #51b8cb, #ec82a3, #f5eb26) border-box !important;
 }
 
+#gdc-calendar-tool-add-button[disabled], #gdc-calendar-tool-add-important-button[disabled]{
+  opacity: 1 !important;
+}
+
+#gdc-calendar-tool-add-button:hover[disabled] {
+  background: linear-gradient(#349bae, #51b8cb) padding-box, linear-gradient(90deg, #f5eb26, #51b8cb, #ec82a3) border-box !important
+}
+
+#gdc-calendar-tool-add-important-button:hover[disabled] {
+  background: linear-gradient(#e15b85, #ec82a3) padding-box, linear-gradient(90deg, #51b8cb, #ec82a3, #f5eb26) border-box !important;
+}
+
 .loader {
   width: 16px;
   height: 16px;
