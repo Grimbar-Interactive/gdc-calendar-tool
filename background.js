@@ -12,9 +12,123 @@ function getAuthToken() {
       resolve(currentToken);
     }
   });
+}   
+
+function getCalendarData() {
+  getAuthToken()
+  .then(token => {
+    console.log(`Got token on load: ${token}`);
+
+    chrome.storage.sync.get(
+      function(items) {
+        var calendarID = items.calendarID;
+        if (calendarID == '' || calendarID == undefined) {
+          calendarID = 'primary';
+        }
+
+        let init = {
+          method: 'GET',
+          async: true,
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          },
+        };
+
+        fetch(`https://www.googleapis.com/calendar/v3/calendars/${calendarID}/events`, init)
+          .then(response => {
+            if (response.error != undefined) {
+              throw response.error;
+            }
+            return response.json();
+          })
+          .then(data => {
+            console.log('Calendar Data Fetched:', JSON.stringify(data));
+            return data;
+          })
+          .catch((error) => {
+            console.error('Error:', error);
+          });
+      });
+
+  });
 }
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  if (request === 'getCalendarData') {
+    getAuthToken()
+      .then(token => {
+        console.log(`Got token on load: ${token}`);
+
+        chrome.storage.sync.get({
+          calendarID: 'primary'
+          }, function(items) {
+          var calendarID = items.calendarID;
+
+            if (calendarID == '' || calendarID == undefined) {
+              calendarID = 'primary';
+            }
+
+            let init = {
+              method: 'GET',
+              async: true,
+              headers: {
+                Authorization: `Bearer ${token}`,
+                'Content-Type': 'application/json'
+              },
+            };
+
+            fetch(`https://www.googleapis.com/calendar/v3/calendars/${calendarID}/events`, init)
+              .then(response => {
+                if (response.error != undefined) {
+                  throw response.error;
+                }
+                return response.json();
+              })
+              .then(data => {
+                console.log('Calendar Data Fetched:', JSON.stringify(data));
+                sendResponse(data);
+              })
+              .catch((error) => {
+                console.error('Error:', error);
+              });
+          });
+      });
+    return true;
+  }
+
+  if (request === 'getDefaultColorId') {
+    getAuthToken()
+    .then(token => {
+      console.log(`Got token: ${token}`);
+
+      chrome.storage.sync.get({
+        defaultColor: 1,
+      }, function(items) {
+        var defaultColor = items.defaultColor;
+
+        sendResponse(defaultColor);
+      });
+    });
+    return true;
+  }
+
+  if (request === 'getImportantColorId') {
+    getAuthToken()
+    .then(token => {
+      console.log(`Got token: ${token}`);
+
+      chrome.storage.sync.get({
+        importantColor: 2,
+      }, function(items) {
+        var importantColor = items.importantColor
+
+        sendResponse(importantColor);
+      });
+    });
+    return true;
+  }
+
   if (request.event == undefined) {
     console.warn('Received undefined onMessage event.');
     return false;
@@ -58,6 +172,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
           })
           .then(data => {
             console.log('Success:', JSON.stringify(data));
+            sendResponse(data);
           })
           .catch((error) => {
             console.error('Error:', error);
