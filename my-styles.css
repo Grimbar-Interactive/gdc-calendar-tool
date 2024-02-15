@@ -17,3 +17,23 @@
 #gdc-calendar-tool-add-important-button:hover {
   background: linear-gradient(#e15b85, #e15b85) padding-box, linear-gradient(90deg, #51b8cb, #ec82a3, #f5eb26) border-box !important;
 }
+
+.loader {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: inline-block;
+  border-top: 2px solid black;
+  border-right: 2px solid transparent;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} 
