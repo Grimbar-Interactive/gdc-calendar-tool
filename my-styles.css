@@ -10,12 +10,21 @@
   padding: 11px 0px !important;
 }
 
+#gdc-calendar-tool-remove-button {
+  background: linear-gradient(#f5eb26, #fff87a) padding-box, linear-gradient(90deg, #ec82a3, #f5eb26, #51b8cb) border-box !important;
+  padding: 11px 0px !important;
+}
+
 #gdc-calendar-tool-add-button:hover {
   background: linear-gradient(#349bae, #349bae) padding-box, linear-gradient(90deg, #f5eb26, #51b8cb, #ec82a3) border-box !important;
 }
 
 #gdc-calendar-tool-add-important-button:hover {
   background: linear-gradient(#e15b85, #e15b85) padding-box, linear-gradient(90deg, #51b8cb, #ec82a3, #f5eb26) border-box !important;
+}
+
+#gdc-calendar-tool-remove-button:hover {
+  background: linear-gradient(#f5eb26, #f5eb26) padding-box, linear-gradient(90deg, #ec82a3, #f5eb26, #51b8cb) border-box !important;
 }
 
 #gdc-calendar-tool-add-button[disabled], #gdc-calendar-tool-add-important-button[disabled]{

@@ -38,6 +38,9 @@ function setImportantColorId(id) {
   console.log("importantColorId: " + importantColorId);
 }
 
+var eventAdded = '';
+var eventFlagged = '';
+
 
 function addSessionToCalendar(isImportant) {
 
@@ -96,7 +99,9 @@ function addSessionToCalendar(isImportant) {
     document.getElementById("gdc-calendar-tool-add-button").innerHTML = `Adding... <span class="loader"></span>`;
   }
 
-  chrome.runtime.sendMessage({event: event, isImportant: isImportant}, (response) => {
+  console.log('Event ID (content.js): ' + eventAdded);
+
+  chrome.runtime.sendMessage({event: event, isImportant: isImportant, eventId: eventAdded}, (response) => {
     console.log('Message sent.');
     console.log('checking event again');
     chrome.runtime.sendMessage('getCalendarData', (response) => {
@@ -121,17 +126,59 @@ function checkEvent(calendarData) {
     if (startDateString == startDate.toISOString().slice(0, 10)) {
       if (item.summary == summary) {
         if (item.colorId == defaultColorId) {
-          document.getElementById("gdc-calendar-tool-add-button").innerHTML = "Added to Calendar &#10003";
-          document.getElementById("gdc-calendar-tool-add-button").disabled = true;
+          eventAdded = item.id;
+          console.log('Event ID (content.js) checkEvent function: ' + eventAdded);
+          eventFlagged = '';   
         }
         else if (item.colorId == importantColorId) {
-          document.getElementById("gdc-calendar-tool-add-important-button").innerHTML = `Added to Calendar &#10003`; 
-          document.getElementById("gdc-calendar-tool-add-important-button").disabled = true;
+          eventAdded = item.id;
+          eventFlagged = item.id;
         }
       }
     }
+    updateUI();
     return;
   }) 
+};
+
+function updateUI() {
+  if (eventAdded !== '') {
+    document.getElementById("gdc-calendar-tool-add-button").innerHTML = "Added to Calendar &#10003";
+    document.getElementById("gdc-calendar-tool-add-important-button").innerHTML = `Flag as Important`; 
+    document.getElementById("gdc-calendar-tool-add-button").disabled = true;
+    document.getElementById("gdc-calendar-tool-remove-button").style.display = "block";
+  }
+  if (eventFlagged !== '') {
+    document.getElementById("gdc-calendar-tool-add-important-button").innerHTML = `Flagged as Important &#10003`; 
+    document.getElementById("gdc-calendar-tool-add-important-button").disabled = true;
+  } 
+  if (eventAdded == '') {
+    document.getElementById("gdc-calendar-tool-add-button").innerHTML = "Add to Google Calendar";
+    document.getElementById("gdc-calendar-tool-add-button").disabled = false;
+    document.getElementById("gdc-calendar-tool-add-important-button").innerHTML = `Add Important`;
+    document.getElementById("gdc-calendar-tool-add-important-button").disabled = false;
+    document.getElementById("gdc-calendar-tool-remove-button").innerHTML = "Remove from Calendar";
+    document.getElementById("gdc-calendar-tool-remove-button").style.display = "none";
+  }
+};
+
+function removeSessionFromCalendar() {
+
+  document.getElementById("gdc-calendar-tool-remove-button").innerHTML = `Removing... <span class="loader"></span>`;
+
+  var eventId = eventAdded;
+  eventAdded = '';
+  eventFlagged = '';
+  
+  chrome.runtime.sendMessage({event: {"summary": summary}, remove: true, eventId: eventId}, (response) => {
+    console.log('Message sent.');
+    console.log('checking event again');
+    chrome.runtime.sendMessage('getCalendarData', (response) => {
+      checkEvent(response);
+    });
+  });
+
+  
 };
 
 window.onload = () => {
@@ -142,6 +189,11 @@ window.onload = () => {
     return;
   }
   
+  button.insertAdjacentHTML('afterend', '<button class="btn btn-primary sb5_button btn-md btn-block" id="gdc-calendar-tool-remove-button">Remove from Calendar</button>');
+  var removeButton = document.getElementById('gdc-calendar-tool-remove-button');
+  removeButton.onclick = () => removeSessionFromCalendar();
+  removeButton.style.display = "none";
+
   button.insertAdjacentHTML('afterend', `<button class="btn btn-primary sb5_button btn-md btn-block" id="gdc-calendar-tool-add-important-button">Add Important</button>`);
   var importantButton = document.getElementById('gdc-calendar-tool-add-important-button');
   importantButton.onclick = () => addSessionToCalendar(true);
