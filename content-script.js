@@ -122,6 +122,7 @@ function checkEvent(calendarData) {
 
   let existingEvents = calendarData.items;
   existingEvents.forEach((item) => {
+    if (item.start == undefined) return;
     let startDateString = [item.start.dateTime == undefined ? '' : item.start.dateTime.slice(0, 10)];
     if (startDateString == startDate.toISOString().slice(0, 10)) {
       if (item.summary == summary) {
