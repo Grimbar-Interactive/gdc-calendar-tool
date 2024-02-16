@@ -121,6 +121,8 @@ function checkEvent(calendarData) {
   if (calendarData == undefined) return;
 
   let existingEvents = calendarData.items;
+  if (existingEvents == undefined) return;
+
   existingEvents.forEach((item) => {
     if (item.start == undefined) return;
     let startDateString = [item.start.dateTime == undefined ? '' : item.start.dateTime.slice(0, 10)];
@@ -128,7 +130,6 @@ function checkEvent(calendarData) {
       if (item.summary == summary) {
         if (item.colorId == defaultColorId) {
           eventAdded = item.id;
-          console.log('Event ID (content.js) checkEvent function: ' + eventAdded);
           eventFlagged = '';   
         }
         else if (item.colorId == importantColorId) {

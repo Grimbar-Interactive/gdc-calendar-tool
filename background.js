@@ -39,8 +39,12 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
                 'Content-Type': 'application/json'
               },
             };
+            
+            var year = new Date().getFullYear();
+            let startDate = `${year}-03-01T00:00:01-08:00`;
+            let endDate = `${year}-03-31T23:59:00-08:00`;
 
-            fetch(`https://www.googleapis.com/calendar/v3/calendars/${calendarID}/events`, init)
+            fetch(`https://www.googleapis.com/calendar/v3/calendars/${calendarID}/events?timeMax=${endDate}&timeMin=${startDate}`, init)
               .then(response => {
                 if (response.error != undefined) {
                   throw response.error;
