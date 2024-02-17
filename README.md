@@ -8,7 +8,7 @@ A Chrome extension for adding GDC sessions to your Google Calendar with one clic
 - Visit the [Chrome Web Store](https://chrome.google.com/webstore/detail/gdc-calendar-tool/pcegnhfgcahkoihgmecbplanamokaede) to install the latest version.
 
 ### Download Locally
-- Download the latest version's .zip source file from the [releases page](https://github.com/jacobfdunbar/gdc-calendar-tool/releases)
+- Download the latest version's .zip source file from the [releases page](https://github.com/Grimbar-Interactive/gdc-calendar-tool/releases)
 - Extract the downloaded .zip file into a new folder
 - Navigate to the Extensions page in Chrome using one of the following options:
   - Click the Extensions icon (puzzle piece) -> Manage Extensions
@@ -30,13 +30,19 @@ Click the Extensions icon (puzzle piece), then the "Menu" button (three dots) ne
 
 ### Setting Colors
 Use the dropdowns to set your desired color. These color names can be found on Google Calendar if you want to match existing colors.
-The "Default Color" is the color you want to use for "normal" sessions.
-The "Important Color" is the color you want to use for "must attend" or otherwise special sessions.
+The "Default Color" is the color used for normal sessions.
+The "Important Color" is the color used for sessions flagged as "Important".
 
 ### Setting Calendar
 To specify what calendar you'd like the events to be added to, perform the following steps:
 - Go to the [Google Calendar website](https://calendar.google.com/)
-- Click the "Menu" button (three dots) -> "Settings and sharing" next to the calendar you'd like to use (under "My calendars" on the left-hand side)
+- Click the "Settings" button (gear icon) -> "Settings"
+- Click on the calendar you'd like to use under "Settings for my calendars"
 - Scroll down to the "Integrate calendar" section and copy & paste the "Calendar ID" into the field on the extension's Options page
 
 Note: By default the extension will use your Google account's primary calendar, so just leave the Calendar ID field blank if that's what you want!
+
+## Privacy
+When using the extension for the first time you will be prompted to allow the plugin to view and edit your calendar events.
+Other than a custom Calendar ID, if set, we do not store your personal data locally or remotely.
+You can view the extension's [Privacy Policy](https://grimbarinteractive.com/#/gdc-calendar-tool/privacy-policy) here for more information.
