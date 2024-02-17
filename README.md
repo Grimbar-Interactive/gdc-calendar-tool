@@ -26,7 +26,7 @@ A Chrome extension for adding GDC sessions to your Google Calendar with one clic
 You can set the colors of added events and specify what calendar to add events to by opening the Options page for the extension.
 
 ### Opening the Options page
-Click the Extensions icon (puzzle piece), then the "Menu" button (three dots) next to the extension, then "Options"
+Click the Extensions icon (puzzle piece), then the "Menu" button (three dots) next to the extension, then "Options".
 
 ### Setting Colors
 Use the dropdowns to set your desired color. These color names can be found on Google Calendar if you want to match existing colors.
@@ -45,4 +45,4 @@ Note: By default the extension will use your Google account's primary calendar, 
 ## Privacy
 When using the extension for the first time you will be prompted to allow the plugin to view and edit your calendar events.
 Other than a custom Calendar ID, if set, we do not store your personal data locally or remotely.
-You can view the extension's [Privacy Policy](https://grimbarinteractive.com/#/gdc-calendar-tool/privacy-policy) here for more information.
+You can view the extension's [Privacy Policy](https://grimbarinteractive.com/#/gdc-calendar-tool/privacy-policy) for more information.
