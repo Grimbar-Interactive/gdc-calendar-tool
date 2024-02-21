@@ -1,6 +1,6 @@
 {
   "name": "GDC Calendar Tool",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Chrome Extension for adding GDC sessions to your Google Calendar in one click!",
   "manifest_version": 3,
   "author": "Grimbar Interactive",
