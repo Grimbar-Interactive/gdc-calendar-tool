@@ -22,6 +22,7 @@ var day = parseInt(document.getElementsByClassName('sb5-session-page-date')[0].i
 var [startHours, startMinutes] = parseDaytime(startTimeString);
 var year = new Date().getFullYear();
 var startDate = new Date(`${day} March ${year} ${startHours}:${startMinutes}:00 UTC-07:00`);
+var dateCompareString = `${year}-03-${day}`;
 var [endHours, endMinutes] = parseDaytime(endTimeString);
 var endDate = new Date(`${day} March ${year} ${endHours}:${endMinutes}:00 UTC-07:00`);
 
@@ -126,7 +127,7 @@ function checkEvent(calendarData) {
   existingEvents.forEach((item) => {
     if (item.start == undefined) return;
     let startDateString = [item.start.dateTime == undefined ? '' : item.start.dateTime.slice(0, 10)];
-    if (startDateString == startDate.toISOString().slice(0, 10)) {
+    if (startDateString == dateCompareString) {
       if (item.summary == summary) {
         if (item.colorId == defaultColorId) {
           eventAdded = item.id;
